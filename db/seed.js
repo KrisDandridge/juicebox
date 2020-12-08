@@ -1,0 +1,19 @@
+const { 
+    client,
+    getAllUsers 
+} = require('./index');
+
+async function testDB() {
+    try {
+        client.connect();
+
+        const { rows } = await getAllUsers();
+        console.log(rows);
+    } catch (error) {
+        console.error(error);    
+    } finally {
+        client.end();
+    }
+}
+
+testDB();
